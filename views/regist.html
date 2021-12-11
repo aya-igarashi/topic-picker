@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>お題登録ページ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>topic picker</h1><!-- コメント -->
+      <div class="form-group">
+      <label style="display:inline-block;" for="exampleFormControlSelect1">テーマ</label>
+      <select style="width: 150px" class="form-control" id="theme" style="display:inline-block;">
+        <option value="日常・趣味">日常・趣味</option>
+        <option value="体験談">体験談</option>
+        <option value="価値観">価値観</option>
+        <option value="恋愛">恋愛</option>
+        <option value="シークレット">シークレット</option>
+      </select>            
+    </div>
+    <div class="form-group col-8" style="padding:20px;">
+      <label for="name">質問</label>
+      <input type="text" class="form-control" style="width:400px;" id="question" placeholder="text question!" >
+    </div>
+    <div class="bt">
+      <button id="save" class="btn btn-primary" type="button" onclick="saveQuestions()">保存</button>
+    </div>
+    <div style="text-align: center";>
+      <button onclick="location.href='/'">戻る</button>
+    </div>
+     <script>
+      
+      function saveQuestions() {
+       const textBox1 = document.getElementById('theme'); // テキストボックス
+       const theme =  textBox1.options[textBox1.selectedIndex].value;  // テキストボックスに書かれた内容
+       const textBox2 = document.getElementById('question'); // テキストボックス
+       const question = textBox2.value; // テキストボックスに書かれた内容
+    
+        
+       const questions = {theme:theme, question:question};
+
+       const url = '/save'; // 通信先
+       const req = new XMLHttpRequest(); // 通信用オブジェクト
+       req.onreadystatechange = function(){
+       if(req.readyState == 4 && req.status == 200) {
+        alert('成功'); // 成功したらアラート表示
+       }
+      };
+      req.open('POST', url, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(questions)); // オブジェクトを文字列化して送信
+     };
+
+
+     </script>
+  </body>
+</html>
+

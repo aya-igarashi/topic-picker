@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>トップページ</title>
+    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+    
+  </head>
+
+  <body>
+    <h1>topic picker</h1><!-- コメント -->
+    <div class="form-group">
+      <label style="display:inline-block;" for="exampleFormControlSelect1">テーマ</label>
+      <select style="width: 150px" class="form-control" id="selectTheme" style="display:inline-block;">
+        <option value="すべて">すべて</option>
+        <option value="日常・趣味">日常・趣味</option>
+        <option value="体験談">体験談</option>
+        <option value="価値観">価値観</option>
+        <option value="恋愛">恋愛</option>
+        <option value="シークレット">シークレット</option>
+      </select>      
+      <button id="topick" class="btn btn-primary" type="submit" style="display:inline-block;" >click me</button>
+    </div>
+      <div class="theme">
+      <div class="theme0">
+      <div class="theme1">
+  
+      </div>
+      <div class="theme2" >
+        <output id="pickedTheme"></output>
+      </div> 
+    <div class="que1">
+      <output id="pickedQuestion"></output>
+    </div>
+    </div>
+    </div>
+    
+    <div class="bt">
+      <button class="bt1" onclick="location.href='/input'">質問登録ページ</button>
+      <button class="bt1" onclick="location.href='/input2'">質問確認ページ</button>
+    </div>
+  </body>
+</html>

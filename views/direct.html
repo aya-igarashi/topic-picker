@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>編集ページ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="/direct.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  
+  <body>
+    <div class="container">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <div>
+      <p>
+       <h1>topic picker<br></h1>
+      </p>
+    </div>
+  
+    <div style="padding:13px;">
+      <button onclick="location.href='/'">戻る</button>
+    </div>
+  
+    <div class="form-group">
+    <select style="width: 150px" class="form-control" id="themeSelect1" >
+      　<option value="すべて">すべて</option>
+        <option value="日常・趣味">日常・趣味</option>
+        <option value="体験談">体験談</option>
+        <option value="価値観">価値観</option>
+        <option value="恋愛">恋愛</option>
+        <option value="シークレット">シークレット</option>
+    </select>      
+    <button id="tosearch" class="btn btn-primary"  type="submit" style="display:inline-block;" >検索</button>
+    </div>
+  
+   <label style="margin-top:20px" for="exampleFormControlSelect2">検索結果</label>    
+    <table id="resultTable" class="table">
+  <thead>
+    <tr>
+      <th style="width:15%" scope="col">テーマ</th>
+      <th style="width:50%" scope="col">質問</th>
+      <th style="width:5%" scope="col">削除</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+
+  </tbody>
+</table>
+  
+   </div>
+  <script>
+    function remove(del_id){
+      const del_questions = {id: del_id};
+      console.log(del_questions);
+      const url = '/remove'; // 通信先
+      const req = new XMLHttpRequest(); // 通信用オブジェクト
+      req.onreadystatechange = function(){
+      if(req.readyState == 4 && req.status == 200) {
+        alert('成功'); // 成功したらアラート表示
+       }
+      };
+      req.open('POST', url, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(del_questions)); // オブジェクトを文字列化して送信
+     };
+    
+
+  </script>
+  
+  </body>
+</html>
+ 
